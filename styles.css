@@ -1,0 +1,293 @@
+/* MAGIC 8 BALL STYLES */
+/* This file makes everything look beautiful! */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Mystical starry background */
+  background: linear-gradient(135deg, #1e0533 0%, #2d1b4e 50%, #1a0a2e 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #fff;
+  /* Add animated stars effect */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated starry background effect */
+body::before {
+  content: '';
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 85%, white, transparent),
+    radial-gradient(1px 1px at 75% 25%, white, transparent);
+  background-size: 200px 200px, 300px 300px, 150px 150px, 250px 250px, 
+                   180px 180px, 220px 220px, 190px 190px;
+  animation: sparkle 60s linear infinite;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+@keyframes sparkle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Main container */
+.magic8ball-container {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Title styling */
+.title {
+  font-size: 3em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px #9d4edd, 0 0 40px #9d4edd;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 20px #9d4edd, 0 0 40px #9d4edd; }
+  to { text-shadow: 0 0 30px #c77dff, 0 0 60px #c77dff; }
+}
+
+.subtitle {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #c77dff;
+}
+
+/* Input box styling */
+.input-container {
+  margin-bottom: 40px;
+}
+
+.question-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px 20px;
+  font-size: 1.1em;
+  border: 3px solid #7b2cbf;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.question-input::placeholder {
+  color: #c77dff;
+}
+
+.question-input:focus {
+  border-color: #c77dff;
+  box-shadow: 0 0 20px rgba(197, 125, 255, 0.5);
+  transform: scale(1.02);
+}
+
+/* THE MAGIC 8 BALL - 3D Effect */
+.ball {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 40px;
+  border-radius: 50%;
+  /* 3D sphere effect with gradients */
+  background: radial-gradient(circle at 30% 30%, #3a3a3a, #000000 60%);
+  box-shadow: 
+    inset -25px -25px 40px rgba(0, 0, 0, 0.5),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.1),
+    0 20px 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.ball:hover {
+  transform: scale(1.05);
+}
+
+/* SHAKE ANIMATION - This makes the ball shake! */
+.ball.shake {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  10% { transform: rotate(-5deg) translateX(-10px); }
+  20% { transform: rotate(5deg) translateX(10px); }
+  30% { transform: rotate(-5deg) translateX(-10px); }
+  40% { transform: rotate(5deg) translateX(10px); }
+  50% { transform: rotate(-5deg) translateX(-10px); }
+  60% { transform: rotate(5deg) translateX(10px); }
+  70% { transform: rotate(-5deg) translateX(-10px); }
+  80% { transform: rotate(5deg) translateX(10px); }
+  90% { transform: rotate(-5deg) translateX(-10px); }
+}
+
+/* Triangle window in the center */
+.triangle-window {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* The number 8 */
+.eight {
+  font-size: 5em;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Answer text - fades in mysteriously */
+.answer {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.3;
+  animation: fadeIn 1s ease-in;
+  text-shadow: 0 0 10px currentColor;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.8);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+/* Thinking dots animation */
+.thinking {
+  display: flex;
+  gap: 10px;
+  font-size: 2em;
+}
+
+.dot {
+  animation: bounce 1s ease-in-out infinite;
+  color: #c77dff;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Shake button */
+.shake-button {
+  padding: 15px 40px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(125, 44, 191, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.shake-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #9d4edd 0%, #c77dff 100%);
+  box-shadow: 0 8px 25px rgba(157, 77, 221, 0.6);
+  transform: translateY(-2px);
+}
+
+.shake-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(125, 44, 191, 0.4);
+}
+
+.shake-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Instructions section */
+.instructions {
+  margin-top: 50px;
+  padding: 20px;
+  background: rgba(125, 44, 191, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(197, 125, 255, 0.3);
+}
+
+.instructions p {
+  margin: 10px 0;
+  color: #e0aaff;
+}
+
+.instructions strong {
+  color: #c77dff;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2em;
+  }
+  
+  .ball {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .triangle-window {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .eight {
+    font-size: 4em;
+  }
+  
+  .answer {
+    font-size: 0.9em;
+  }
+}
