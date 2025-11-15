@@ -48,3 +48,4 @@ This project is perfect for learning:
 
 **Perfect for families learning to code together!** 🎓  
 All code includes helpful comments explaining how everything works.
+link: https://taynazdev.github.io/Magic-8-ball/
