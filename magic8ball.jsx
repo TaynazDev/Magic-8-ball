@@ -65,6 +65,23 @@ function Magic8Ball() {
     return { answer: randomAnswer, color: color };
   };
 
+  // CONTENT FILTER - Checks for inappropriate content
+  // This helps keep the Magic 8 Ball family-friendly!
+  const containsInappropriateContent = (text) => {
+    const lowerText = text.toLowerCase();
+    
+    // List of inappropriate words to filter out
+    const inappropriateWords = [
+      'damn', 'hell', 'crap', 'stupid', 'idiot', 'dumb',
+      'hate', 'kill', 'die', 'death', 'hurt', 'violence',
+      'blood', 'weapon', 'gun', 'knife', 'fight'
+      // Add more words as needed for your family's standards
+    ];
+    
+    // Check if the question contains any inappropriate words
+    return inappropriateWords.some(word => lowerText.includes(word));
+  };
+
   // SHAKE THE BALL FUNCTION
   // This is what happens when you click "Shake the Ball"
   const shakeBall = () => {
@@ -74,6 +91,12 @@ function Magic8Ball() {
     // Check if user typed a question
     if (!question.trim()) {
       alert('Please ask a question first! 🔮');
+      return;
+    }
+    
+    // Check for inappropriate content
+    if (containsInappropriateContent(question)) {
+      alert('🔮 The Magic 8 Ball only answers kind and appropriate questions! Please try again with a different question.');
       return;
     }
     
@@ -88,6 +111,7 @@ function Magic8Ball() {
       setAnswer(result.answer);
       setAnswerColor(result.color);
       setIsShaking(false); // Stop shaking
+      setQuestion(''); // Clear the question after getting answer
     }, 1500); // 1500 milliseconds = 1.5 seconds
   };
 
